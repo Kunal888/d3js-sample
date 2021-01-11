@@ -10,35 +10,24 @@ function User2() {
     const [updateDates, setUpdateDates] = useState([])
 
     function drawChart() {
-        var data = comments //[1.1,2.2,4.46,2.12,1.36,5.002445,4.1242]; 
-  
-        // Selecting SVG using d3.select() 
+        var data = comments 
         var svg = d3.select("svg"); 
   
         let g = svg.append("g") 
                .attr("transform", "translate(150,120)"); 
-          
-        // Creating Pie generator 
         var pie = d3.pie(); 
-  
-        // Creating arc 
         var arc = d3.arc() 
                     .innerRadius(0) 
                     .outerRadius(100); 
-  
-        // Grouping different arcs 
         var arcs = g.selectAll("arc") 
                     .data(pie(data)) 
                     .enter() 
                     .append("g"); 
-  
-        // Appending path  
         arcs.append("path") 
             .attr("fill", (data, i)=>{ 
                 return d3.schemeSet3[i]; 
             }) 
             .attr("d", arc); 
-
     }
 
     useEffect(() => {
