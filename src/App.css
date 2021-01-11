@@ -1,101 +1,120 @@
 body {
-  background: url(./bg.jpeg) no-repeat center center fixed; 
-  background-size: cover;
+    background-color: #f5f5f5;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-family: serif;    
-  width: 50%;
-  margin: auto;
-	margin-top: 4em;
-  margin-bottom: 4em;
-  color: white;
-  background-color: rgba(21, 32, 48, 0.6);
-	padding: auto;
-  border-radius: 25px;
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    margin: auto;
+    margin-top: 10vh;
 }
 
-#form {
-  display: flex;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  padding: 1em;
+.form h1 {
+    font-size: 2em;
+    font-weight: 700;
+    text-align: left;
+    margin-left: 1em;
 }
 
-#search-text {
-  margin: 0;
-  width: 60%;
-  border: none;
-  border-radius: 20px;
-  padding: 0.5em;
-  font-size: larger;
+#name {
+    width: 80%;
+    border: none;
+    background-color: #fff;
+    margin: 0.5em;
+    padding: 1em;
+    border-radius: 5em;
+    box-shadow: 0.5em 0.1em 0.5em #888888;
+    outline: none;
+    text-align: left;
 }
 
-#search-button {
-  position: relative;
-  padding: 0.5em;
-  width: 30%;
-  margin: 0 auto;
-  font-size: larger;
-  cursor: pointer;
-	outline: 0;
-	background-color: #00698C;
-	color: white;
-	border: none;
-	border-bottom: 5px solid #0093C4;
-	border-radius: 25px;
+#password {
+    width: 80%;
+    border: none;
+    background-color: #fff;
+    margin: 0.5em;
+    padding: 1em;
+    border-radius: 5em;
+    box-shadow: 0.5em 0.1em 0.5em #888888;
+    outline: none;
+    text-align: left;
 }
 
-.data-item {
-  display: block;
-  text-align: center;
-  font-size: 30px;
-  font-weight: 500;
-  font-family: Verdana;
-  margin: 0.25em;
-  margin-bottom: 0.5em;
-  padding: 0.1em;
+#submit {
+    background-color: #a9a9a9;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    width: 80%;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 5em;
+    box-shadow: 0.5em 0.1em 0.5em #888888;
+    cursor: pointer;
+    outline: none;
 }
 
-#temperature {
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 0.5px solid white;
-  border-radius: 20px;
-  width: 30%;
-  margin: auto;
-  padding: 0.5em;
-  font-weight: 600;
+@media screen and (min-width: 800px) {
+    #login {
+        width: 60vw;
+        margin: auto;
+        margin-top: 10vh;
+    }
 }
 
-.data-item img {
-  background-color: rgba(255, 255, 255, 0.85);
-  opacity: 0.8;
-  border: 0.5px solid white;
-  border-radius: 20px;
-  width: 30%;
-  margin: auto;
-  padding: 0.2em;
+#user1 h1 {
+    display: block;
+    text-align: center;
+    margin: 1em;
 }
 
-#error-text {
-  background: #c51244;
-  width: fit-content;
-  margin: auto;
-  display: block;
-  text-align: center;
-  font-size: 30px;
-  font-weight: 500;
-  font-family: Verdana;
-  margin-bottom: 1em;
-  padding: 0.1em;
+#user2 h1 {
+    display: block;
+    text-align: center;
+    margin: 1em;
 }
 
-@media only screen and (max-width: 600px) {
-  .App {
-    width: 95%;
-  }
+#chart {
+    background-color: #fff;
+    width: fit-content;
+    margin: auto;
+    margin-top: 5em;
+    border: none;
+    border-radius: 1em;
+    box-shadow: 0.5em 0.5em 0.5em #888888;
+}
+
+#pie-chart {
+    background-color: #fff;
+    width: fit-content;
+    margin: auto;
+    margin-top: 5em;
+    border: none;
+    border-radius: 1em;
+    box-shadow: 0.5em 0.5em 0.5em #888888;
+}
+
+#pie-chart svg {
+    width: fit-content;
+    height: 250px;
+}
+
+#logout-btn {
+    display: block;
+    justify-content: end;
+    position: relative;
+    cursor: pointer;
+    float: right;
+    align-items: flex-end;
+    text-align: center;
+    background-color: #00f;
+    color: #fff;
+    padding: 1em;
+    font-size: larger;
+    margin: 2em;
+    border-radius: 1em;
+    box-shadow: 0.2em 0.2em 0.2em #888888;
 }

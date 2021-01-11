@@ -1,77 +1,63 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import User1 from './components/User1'
+import User2 from './components/User2'
+import LoginForm from './components/LoginForm'
 import './App.css'
 
 function App() {
   
-  const [location, setLocation] = useState('London')
-  const [tempLocation, setTempLocation] = useState('London')
-  const [city, setCity] = useState('')
-  const [temperature, setTemperature] = useState('')
-  const [description, setDescription] = useState('')
-  const [icon, setIcon] = useState('')
-
-  function handleOnSubmit(event) {
-    event.preventDefault()
-    setLocation(tempLocation)
+  const user1 = {
+    username: "John",
+    password: "12345"
+  }
+  const user2 = {
+    username: "Micky",
+    password: "98765"
   }
 
-  useEffect(() => {
-    async function fetchData() {
-      const API_KEY = `e6ddec8aa59b9f30aaafac7c95d94dbc`
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`
-      
-      const response = await fetch(url)
-      const res = await response.json()
-      if(res.main !== undefined) {
-        setCity(res.name)
-        setTemperature(res.main.temp)
-        setDescription(res.weather[0].main)
-        setIcon(res.weather[0].icon)
-      }
-      else {
-        setCity('')
-      }
-    }
-    fetchData()
-  }, [location])
+  const [user, setUser] = useState({username: "", password: ""})
+  const [error, setError] = useState("")
+  
+  const Login = details => {
+    console.log(details)
 
-  return(
+    if(details.username===user1.username && details.password===user1.password) {
+      setUser({username: details.username, password: details.password})
+      setError("")
+      console.log("User1 logged in!")
+    }
+    else if(details.username===user2.username && details.password===user2.password) {
+      setUser({username: details.username, password: details.password})
+      setError("")
+      console.log("User2 logged in!")
+    }
+    else {
+      setError("Details do not match!")
+      console.log("Details do not match!")
+    }
+  }
+
+  const Logout = () => {
+    setUser({username: "", password: ""})
+  }
+
+  return (
     <div className="App">
-      <form id="form" onSubmit={handleOnSubmit}>
-        <input 
-          type="text"
-          id="search-text"
-          value={tempLocation}
-          placeholder="Enter the place here..."
-          onChange={(e) => setTempLocation(e.target.value)}
-        />
-        <button type="submit" id="search-button">Search</button>
-      </form>
-      <div id="data">
-        {city!=='' && (
-        <>
-          <div className="data-item">
-            {city}
-          </div>
-          <div className="data-item" id="temperature">
-            {temperature} &#8451;
-          </div>
-          <div className="data-item">
-            {<img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt={description}/>}
-          </div>
-          <div className="data-item">
-            {description}
-          </div>
-        </>
-        )}
-        {city==='' && (
+      {
+        (user.username===user1.username && user.password===user1.password) ? (
           <>
-            <div id="error-text">
-              City not found!
-            </div>
+            <button id="logout-btn" onClick={Logout}>Logout</button>
+            <User1 />
           </>
-        )}
-      </div>
+        ) : 
+        (user.username===user2.username && user.password===user2.password) ? (
+          <>
+            <button id="logout-btn" onClick={Logout}>Logout</button>
+            <User2 />
+          </>
+        ) : 
+        <LoginForm Login={Login} error={error} />
+      }
     </div>
   )
 }
